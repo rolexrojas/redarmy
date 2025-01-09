@@ -69,7 +69,7 @@ public class DisneyContestBot {
         //username = driver.find_element(By.XPATH, "//form[input/@name='username']")
         element.sendKeys("TANKEN");
         element.sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         WebElement Voorname = driver.findElement(By.id("choix_993410"));
         Voorname.sendKeys("J.A");
         Voorname.sendKeys(Keys.TAB);
