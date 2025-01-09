@@ -31,14 +31,15 @@ public class DisneyContestBot {
         options.addArguments("disable-infobars"); // disabling infobars
         options.addArguments("--disable-extensions"); // disabling extensions
         //options.addArguments("--disable-gpu"); // applicable to windows os only
-        //options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-dev-shm-usage");
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://www.skyradio.nl/acties/luister-naar-sky-radio-en-win-1-jaar-gratis-leven");
-        Thread.sleep(1500);
+
+        Thread.sleep(2000);
         WebElement akoordCookies = driver.findElement(By.id("onetrust-accept-btn-handler"));
         //.element.getText();
         akoordCookies.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         //driver.navigate().refresh();
 
         //((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 1700);");
@@ -64,12 +65,11 @@ public class DisneyContestBot {
         //link.sendKeys(Keys.TAB);
         //link.sendKeys(Keys.TAB);
         driver.switchTo().frame("qualifio-4B04B8D7-74D1-424C-AA85-9B1B246E19C9");
-        Thread.sleep(5000);
         WebElement element = driver.findElement(By.id("reponse"));
         //username = driver.find_element(By.XPATH, "//form[input/@name='username']")
-        element.sendKeys("GRATIS");
+        element.sendKeys("TANKEN");
         element.sendKeys(Keys.ENTER);
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         WebElement Voorname = driver.findElement(By.id("choix_993410"));
         Voorname.sendKeys("J.A");
         Voorname.sendKeys(Keys.TAB);
@@ -85,11 +85,10 @@ public class DisneyContestBot {
         driver.switchTo().activeElement().sendKeys(Keys.SPACE);
         //driver.switchTo().activeElement().sendKeys(Keys.TAB);
         driver.switchTo().activeElement().sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         driver.close();
         driver.quit();
-        Thread.sleep(2000);
 
 
     }
