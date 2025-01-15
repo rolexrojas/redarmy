@@ -24,23 +24,25 @@ public class DisneyContestBot {
     public void executeScript() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
         ChromeOptions options = new ChromeOptions();
+        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
         //options.addArguments("--headless");
         //options.setExperimentalOption("useAutomationExtension", false);
         options.addArguments("start-maximized"); // open Browser in maximized mode
-        options.addArguments("disable-infobars"); // disabling infobars
+        options.addArguments("--disable-infobars"); // disabling infobars
         options.addArguments("--disable-extensions"); // disabling extensions
         //options.addArguments("--disable-gpu"); // applicable to windows os only
-        options.addArguments("--disable-dev-shm-usage");
+        //options.addArguments("--disable-dev-shm-usage");
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://www.skyradio.nl/acties/luister-naar-sky-radio-en-win-1-jaar-gratis-leven");
 
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         WebElement akoordCookies = driver.findElement(By.id("onetrust-accept-btn-handler"));
         //.element.getText();
         akoordCookies.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         //driver.navigate().refresh();
+
 
         //((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 1700);");
 
@@ -55,41 +57,43 @@ public class DisneyContestBot {
 
         //WebElement link = driver.findElement(By.linkText("hier"));
        // Thread.sleep(8000);
+        WebElement shadowHost = driver.findElement(By.cssSelector(".mui-1wajxqp"));
+        SearchContext shadowRoot =shadowHost.getShadowRoot();
+
+        WebElement element1 = shadowRoot.findElement(By.cssSelector(".qualifio_iframe_tag"));
+        driver.switchTo().frame(element1);
+
+        Thread.sleep(3000);
 
 
-
-        //JavascriptExecutor js = (JavascriptExecutor) driver;
-        //js.executeScript("arguments[0].scrollIntoView(true)", link);
-        ///link.sendKeys(Keys.TAB);
-        //link.sendKeys(Keys.TAB);
-        //link.sendKeys(Keys.TAB);
-        //link.sendKeys(Keys.TAB);
-        driver.switchTo().frame("qualifio-4B04B8D7-74D1-424C-AA85-9B1B246E19C9");
         WebElement element = driver.findElement(By.id("reponse"));
         //username = driver.find_element(By.XPATH, "//form[input/@name='username']")
-        element.sendKeys("TANKEN");
+        element.sendKeys("energie");
         element.sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         WebElement Voorname = driver.findElement(By.id("choix_993410"));
+        Thread.sleep(300);
         Voorname.sendKeys("J.A");
         Voorname.sendKeys(Keys.TAB);
-        driver.switchTo().activeElement().sendKeys("MARRERO");
+        driver.switchTo().activeElement().sendKeys("Marrero");
         driver.switchTo().activeElement().sendKeys(Keys.TAB);
-        driver.switchTo().activeElement().sendKeys("0684784289");
+        driver.switchTo().activeElement().sendKeys("robertorojas20@gmail.com");
+        driver.switchTo().activeElement().sendKeys(Keys.TAB);
+        driver.switchTo().activeElement().sendKeys("0610905931");
         driver.switchTo().activeElement().sendKeys(Keys.TAB);
 
         driver.switchTo().activeElement().sendKeys("HEERHUGOWAARD");
         driver.switchTo().activeElement().sendKeys(Keys.TAB);
         driver.switchTo().activeElement().sendKeys(Keys.SPACE);
         driver.switchTo().activeElement().sendKeys(Keys.TAB);
-        driver.switchTo().activeElement().sendKeys(Keys.SPACE);
-        //driver.switchTo().activeElement().sendKeys(Keys.TAB);
+        //driver.switchTo().activeElement().sendKeys(Keys.SPACE);
+        driver.switchTo().activeElement().sendKeys(Keys.TAB);
         driver.switchTo().activeElement().sendKeys(Keys.ENTER);
         Thread.sleep(2000);
 
         driver.close();
         driver.quit();
-
+        Thread.sleep(2000);
 
     }
 }
